@@ -1,0 +1,178 @@
+<!--
+  <section class="hero" style="background-color: black; margin-top: -10px;">
+    <div class="hero-body">
+      <div class="container" style="text-align: center; max-width: 880px;">
+
+        <style>
+          .changing {
+            position: relative;
+            display: inline-block;
+          }
+
+          @keyframes fadeOut {
+            0% {
+              opacity: 1;
+              transform: translateY(0);
+            }
+
+            50% {
+              opacity: 0;
+              transform: translateY(-20px);
+            }
+
+            100% {
+              opacity: 0;
+              transform: translateY(-20px);
+            }
+          }
+
+          @keyframes fadeIn {
+            0% {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+
+            50% {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+
+            100% {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        </style>
+        <script>
+          const words = ["Designing", "Video Editing", "Drone Piloting", "Videography", "Programming"];
+          let currentWordIndex = 0;
+          const changingText = document.getElementById("changingText");
+
+          function changeWord() {
+            changingText.classList.remove("changing");
+
+            setTimeout(() => {
+              changingText.style.animation = "fadeOut 0.5s ease-in-out forwards";
+
+              setTimeout(() => {
+                changingText.textContent = words[currentWordIndex];
+                changingText.style.animation = "fadeIn 0.5s ease-in-out forwards";
+
+                currentWordIndex++;
+                if (currentWordIndex === words.length) {
+                  currentWordIndex = 0;
+                }
+              }, 500); // Wait for the fadeOut animation to complete (adjust this value accordingly)
+            }, 2000); // Wait before starting the animation (adjust this value accordingly)
+          }
+
+          // Change the word every 4 seconds (4000 milliseconds)
+          setInterval(changeWord, 4000);
+        </script>
+        <br>
+        <div class="columns is-desktop">
+
+          <div class="carousel-container">
+            <div class="carousel-slide">
+              <img src="/image/Unknown-4.jpg" alt="">
+              <img src="/image/Unknown-4.jpg" alt="">
+              <img src="/image/Unknown-4.jpg" alt="">
+              <img src="/image/Unknown-4.jpg" alt="">
+              <img src="/image/Unknown-4.jpg" alt="">
+              <img src="/image/Unknown-4.jpg" alt="">
+              <img src="/image/Unknown-4.jpg" alt="">
+              <img src="/image/Unknown-4.jpg" alt="">
+              <img src="/image/Unknown-4.jpg" alt="">
+              <img src="/image/Unknown-4.jpg" alt="">
+            </div>
+          </div>
+
+
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+          <script>
+            $(document).ready(function () {
+              $('.carousel-slide').slick({
+                infinite: true,
+                speed: 5000, // set the speed of the carousel animation
+                autoplay: true, // enable autoplay
+                autoplaySpeed: 0, // set autoplay speed to 0 to enable custom scrolling
+                cssEase: 'linear', // set the easing effect of the carousel animation
+                slidesToShow: 4,
+                responsive: [
+                  {
+                    breakpoint: 968,
+                    settings: {
+                      slidesToShow: 2
+                    }
+                  }
+                ]
+              });
+
+              // set the custom autoplay scroll function
+              $('.carousel-slide').on('setPosition', function () {
+                var $slideContainer = $(this).find('.slick-slide');
+
+                function scrollImages() {
+                  // get the current slide offset
+                  var slideOffset = $('.carousel-slide').offset().left - $('.carousel-container').offset().left;
+
+                  // animate the slide container to move to the next slide
+                  $slideContainer.animate({ 'left': -slideOffset }, 2000, 'linear', function () {
+                    // after the animation is complete, move the first slide to the end
+                    $('.carousel-slide').slick('slickNext');
+                  });
+                }
+
+                // start the custom autoplay cycle
+                scrollImages();
+
+                // pause the custom autoplay when hovering over the carousel
+                $('.carousel-container').mouseenter(function () {
+                  $slideContainer.stop();
+                }).mouseleave(function () {
+                  scrollImages();
+                });
+              });
+            });
+          </script>
+
+
+          <style>
+            .carousel-container {
+              overflow: hidden;
+              width: 100%;
+              /* Set the width of the carousel to fill its container */
+              margin: 0 auto;
+              /* Center the carousel horizontally */
+            }
+
+            .carousel-slide {
+              width: 60%;
+              /* Set the width of the slides to fill the carousel */
+            }
+
+            @media (max-width: 768px) {
+              .carousel-slide {
+                width: 80%;
+              }
+            }
+
+            .carousel-slide img {
+              width: 100%;
+              /* Set the width of the images to fill their container */
+              margin-right: 10px;
+              /* Add a margin of 10 pixels to the right of each image */
+            }
+
+            .slick-prev,
+            .slick-next {
+              display: none !important;
+            }
+          </style>
+
+        </div>
+
+      </div>
+  </section>-->
